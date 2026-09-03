@@ -5,6 +5,7 @@ React+Bun
 Terraform
 Github Actions
 
+
 ## Region
 `ap-southeast-2`
 
@@ -40,3 +41,6 @@ Not set up yet — still in the planning phase.
 
 ## Security
 Might set up a custom error page
+
+
+## 

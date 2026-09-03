@@ -46,3 +46,33 @@ resource "aws_s3_bucket_policy" "public_read" {
         ]
     })
 }
+
+locals {
+  website = fileset("${path.module}/website", "**")
+
+  content_types = {
+    html = "text/html"
+    css  = "text/css"
+    js   = "application/javascript"
+    json = "application/json"
+    png  = "image/png"
+    svg  = "image/svg+xml"
+    ico  = "image/x-icon"
+    txt  = "text/plain"
+  }
+}
+
+resource "aws_s3_object" "website_files" {
+  for_each = local.website
+
+  bucket = aws_s3_bucket.this.id
+  key    = each.value
+  source = "${path.module}/website/${each.value}"
+  etag   = filemd5("${path.module}/website/${each.value}")
+
+  content_type = lookup(
+    local.content_types,
+    lower(element(reverse(split(".", each.value)), 0)),
+    "application/octet-stream"
+  )
+}
