@@ -31,7 +31,11 @@ None at the moment
 
 ---
 
-## CloudWatch
+## Website files
+
+Before i had to manually upload them to the bucket so i changed it to just pull the files from a directory in the terraform project for now.
+Later i will set it up to intergrate with a version control system to automate the dev setup
+## Cloudfront 
 Not set up yet — still in the planning phase.
 
 * **Logs** — maybe experiment with them, but **not in prod** (don't want to store them)
