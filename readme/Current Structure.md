@@ -71,4 +71,11 @@ Not set up yet — still in the planning phase.
 Might set up a custom error page
 
 
-## 
+## Later plans
+
+- Github actions 
+- maybe some basic aws protection 
+- usful cheap monitoring
+- Backend handling
+- Database 
+- KUBENETES if im crazy enough, just for fun
