@@ -1,4 +1,4 @@
-
+(Currently still planning)
 ## Tech Stack
 AWS
 React+Bun
