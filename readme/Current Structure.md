@@ -1,4 +1,25 @@
 (Currently still planning)
+## Map
+Simple first then ill develop it out to be a full prod ready secure setup, always start small
+``` 
+Dev local computer
+├── main.tf
+└── website/
+    ├── index.html
+    ├── assets/
+    └── other website files│
+        │ terraform apply
+        ▼
+Public AWS S3 bucket
+        │
+        ▼
+S3 website endpoint
+        │
+        ▼
+Visitor's browser
+```
+
+
 ## Tech Stack
 AWS
 React+Bun
@@ -35,6 +56,9 @@ None at the moment
 
 Before i had to manually upload them to the bucket so i changed it to just pull the files from a directory in the terraform project for now.
 Later i will set it up to intergrate with a version control system to automate the dev setup
+
+- I added fingerprinting tech to allow terraform tyo check the fingerprint of the files to see if they were changed 
+
 ## Cloudfront 
 Not set up yet — still in the planning phase.
 
