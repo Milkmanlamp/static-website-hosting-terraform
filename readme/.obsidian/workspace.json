@@ -76,9 +76,21 @@
               "icon": "lucide-file",
               "title": "0) Overview"
             }
+          },
+          {
+            "id": "96c6f1c7227bc2f8",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Architecture.drawio.png"
+              },
+              "icon": "lucide-image",
+              "title": "Architecture.drawio"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -156,7 +168,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0) Overview.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,7 +186,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "0) Overview.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -218,7 +228,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0) Overview.md",
+                "file": "Untitled.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -245,18 +255,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "5a280898b974a66a",
+  "active": "29d7c32b5a8166d5",
   "lastOpenFiles": [
-    "2) Architecture diagram Explanation.md",
     "Architecture.drawio.png",
-    "Image links/Pasted image 20260905181027.png",
-    "Image links",
-    "1) Technology.md",
     "5) Deployment.md",
     "4) Alternatives.md",
     "3) Design Decisions.md",
+    "2) Architecture diagram Explanation.md",
+    "1) Technology.md",
     "0) Overview.md",
     "Untitled.md",
+    "Image links/Pasted image 20260905181027.png",
+    "Image links",
     "Untitled 1.md"
   ]
 }

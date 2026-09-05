@@ -1,39 +1,15 @@
 (Currently still planning)
-## Map
-Simple first then ill develop it out to be a full prod ready secure setup, always start small
-``` 
-Dev local computer
-├── main.tf
-└── website/
-    ├── index.html
-    ├── assets/
-    └── other website files│
-        │ terraform apply
-        ▼
-Public AWS S3 bucket
-        │
-        ▼
-S3 website endpoint
-        │
-        ▼
-Visitor's browser
-```
 
+## What is this project? 
 
-## Tech Stack
-AWS
-React+Bun
-Terraform
-Github Actions
+This project is here to help me develop my understanding of website-hosting options in AWS, how I can expand this architecture in future projects, and how the features and costs change with each design. As this is the first iteration of the hosting setup, I wanted to start with the most basic, inexpensive, and secure way to host a website using AWS infrastructure. 
+
+**keep in mind ill be starting with a static webpage that I have coded up when making my old businesses website for freelance full stack work. ill add a backend to a later project**
 
 
 ## Region
+
 `ap-southeast-2`
-
-## VPC
-None at the moment
-
----
 
 ## Bucket
 
@@ -50,32 +26,25 @@ None at the moment
 > [!note] Storage class
 > Could use **S3 Infrequent Access** later.
 
----
-
 ## Website files
 
-Before i had to manually upload them to the bucket so i changed it to just pull the files from a directory in the terraform project for now.
-Later i will set it up to intergrate with a version control system to automate the dev setup
+Previously, I had to manually upload the files to the bucket, so I changed the setup to pull them from a directory in the Terraform project for now.
 
-- I added fingerprinting tech to allow terraform tyo check the fingerprint of the files to see if they were changed 
+Later, I will integrate the project with a version control system to automate the development setup.
 
-## Cloudfront 
-Not set up yet — still in the planning phase.
+- I added file fingerprinting to allow Terraform to check whether the files have changed.
 
-* **Logs** — maybe experiment with them, but **not in prod** (don't want to store them)
-* **Functions** — maybe for redirects and security logic; TBD
+## CloudFront
 
----
+Not set up yet—it is still in the planning phase.
+
+- **Logs** — I might experiment with them, but not in production because I do not want to store them.
+- **Functions** — I might use them for redirects and security logic; this is still to be decided.
+
+## Monitoring Options
+
 
 ## Security
-Might set up a custom error page
 
 
-## Later plans
 
-- Github actions 
-- maybe some basic aws protection 
-- usful cheap monitoring
-- Backend handling
-- Database 
-- KUBENETES if im crazy enough, just for fun
