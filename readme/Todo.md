@@ -2,3 +2,4 @@
 - route 53 with my domain that i bought
 - have the code be published from github with github actions
 - i could set up lambda + api gateway + ses for the email form submission tech
+- look into gravition cpus for effiecenty as anything runs on arm

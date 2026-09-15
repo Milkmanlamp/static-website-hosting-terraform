@@ -15,8 +15,8 @@ resource "aws_s3_bucket_public_access_block" "this" {
   bucket = aws_s3_bucket.this.id
   block_public_acls       = true
   ignore_public_acls      = true
-  block_public_policy     = false
-  restrict_public_buckets = false
+  block_public_policy     = true
+  restrict_public_buckets = true
 }
 resource "aws_s3_bucket_website_configuration" "this" {
   bucket = aws_s3_bucket.this.id
@@ -39,9 +39,16 @@ resource "aws_s3_bucket_policy" "public_read" {
             {
                 Sid       = "PublicReadGetObject"
                 Effect    = "Allow"
-                Principal = "*"
+                Principal = {
+                  Service = "cloudfront.amazonaws.com"
+                }
                 Action    = "s3:GetObject"
                 Resource  = "${aws_s3_bucket.this.arn}/*"
+                Condition = {
+                  StringEquals = {
+                    "AWS:SourceArn" = "arn:aws:cloudfront::665511041793:distribution/E1M0NWTHBM23M5"
+                  }
+                }
             }
         ]
     })

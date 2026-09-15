@@ -123,12 +123,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5) Deployment.md",
+                "file": "2) Architecture diagram Explanation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5) Deployment"
+              "title": "2) Architecture diagram Explanation"
             }
           }
         ],
@@ -299,12 +299,12 @@
   },
   "active": "4ef893f47c56adbe",
   "lastOpenFiles": [
-    "Architecture.drawio.png",
-    "4) Alternatives.md",
-    "5) Deployment.md",
-    "Todo.md",
     "3) Design Decisions.md",
+    "Todo.md",
     "1) Technology.md",
+    "Architecture.drawio.png",
+    "5) Deployment.md",
+    "4) Alternatives.md",
     "2) Architecture diagram Explanation.md",
     "0) Overview.md",
     "Rough.md",
