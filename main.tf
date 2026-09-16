@@ -1,6 +1,7 @@
 provider "aws" {
   region = "ap-southeast-2"
 }
+## Bucket
 resource "aws_s3_bucket" "this" {
   bucket = "my-website-bucket-project65"
 }
@@ -10,6 +11,7 @@ resource "aws_s3_bucket_ownership_controls" "this" {
     object_ownership = "BucketOwnerEnforced"
   }
 }
+
 
 resource "aws_s3_bucket_public_access_block" "this" {
   bucket = aws_s3_bucket.this.id
@@ -37,7 +39,7 @@ resource "aws_s3_bucket_policy" "public_read" {
         Version = "2012-10-17"
         Statement = [
             {
-                Sid       = "PublicReadGetObject"
+                Sid       = "AllowCloudFrontServicePrincipalReadOnly"
                 Effect    = "Allow"
                 Principal = {
                   Service = "cloudfront.amazonaws.com"
@@ -46,7 +48,7 @@ resource "aws_s3_bucket_policy" "public_read" {
                 Resource  = "${aws_s3_bucket.this.arn}/*"
                 Condition = {
                   StringEquals = {
-                    "AWS:SourceArn" = "arn:aws:cloudfront::665511041793:distribution/E1M0NWTHBM23M5"
+                    "AWS:SourceArn" = "arn:aws:cloudfront::665511041793:distribution/E1UB90KFJEPZOE"
                   }
                 }
             }
@@ -68,7 +70,7 @@ locals {
     txt  = "text/plain"
   }
 }
-
+## Website files
 resource "aws_s3_object" "website_files" {
   for_each = local.website
 
@@ -83,3 +85,4 @@ resource "aws_s3_object" "website_files" {
     "application/octet-stream"
   )
 }
+## Cloudfront
