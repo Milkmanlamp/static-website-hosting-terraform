@@ -1,6 +1,22 @@
 provider "aws" {
   region = "ap-southeast-2"
 }
+provider "aws" {
+  alias  = "us_east_1"
+  region = "us-east-1"
+}
+##Domain
+resource "aws_acm_certificate" "website" {
+  provider                  = aws.us_east_1
+  domain_name               = "guavamilk.com"
+  subject_alternative_names = ["www.guavamilk.com"]
+
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
 ## Bucket
 resource "aws_s3_bucket" "this" {
   bucket = "my-website-bucket-project65"
@@ -131,4 +147,9 @@ resource "aws_cloudfront_distribution" "this" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+}
+## Outputs
+output "url" {
+  description = "website url from cloudfront"
+  value       = "https://${aws_cloudfront_distribution.this.domain_name}"
 }
