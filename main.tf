@@ -14,7 +14,7 @@ resource "aws_s3_bucket_ownership_controls" "this" {
 
 
 resource "aws_s3_bucket_public_access_block" "this" {
-  bucket = aws_s3_bucket.this.id
+  bucket                  = aws_s3_bucket.this.id
   block_public_acls       = true
   ignore_public_acls      = true
   block_public_policy     = true
@@ -30,30 +30,30 @@ resource "aws_s3_bucket_website_configuration" "this" {
   }
 }
 resource "aws_s3_bucket_policy" "public_read" {
-    bucket = aws_s3_bucket.this.id
+  bucket = aws_s3_bucket.this.id
 
-    depends_on = [
-        aws_s3_bucket_public_access_block.this
+  depends_on = [
+    aws_s3_bucket_public_access_block.this
+  ]
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "AllowCloudFrontServicePrincipalReadOnly"
+        Effect = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+        Action   = "s3:GetObject"
+        Resource = "${aws_s3_bucket.this.arn}/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = "arn:aws:cloudfront::665511041793:distribution/E1UB90KFJEPZOE"
+          }
+        }
+      }
     ]
-    policy = jsonencode({
-        Version = "2012-10-17"
-        Statement = [
-            {
-                Sid       = "AllowCloudFrontServicePrincipalReadOnly"
-                Effect    = "Allow"
-                Principal = {
-                  Service = "cloudfront.amazonaws.com"
-                }
-                Action    = "s3:GetObject"
-                Resource  = "${aws_s3_bucket.this.arn}/*"
-                Condition = {
-                  StringEquals = {
-                    "AWS:SourceArn" = "arn:aws:cloudfront::665511041793:distribution/E1UB90KFJEPZOE"
-                  }
-                }
-            }
-        ]
-    })
+  })
 }
 
 locals {
@@ -86,3 +86,11 @@ resource "aws_s3_object" "website_files" {
   )
 }
 ## Cloudfront
+resource "aws_cloudfront_origin_access_control" "this" {
+  name        = "${aws_s3_bucket.this.id}-oac"
+  description = "allow access into the bucket from cloudfront"
+
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
